@@ -1,0 +1,68 @@
+[
+  {
+    "id": "common_lucky_charm",
+    "name": "Lucky Charm",
+    "emoji": "🍀",
+    "category": "Crate Rewards",
+    "rarity": "Common",
+    "price": 25000,
+    "sellPrice": 12500,
+    "description": "A Lucky Charm found inside a Common Crate.",
+    "minStock": 1,
+    "maxStock": 3,
+    "effect": "collectible"
+  },
+  {
+    "id": "rare_lucky_ticket",
+    "name": "Royal Lucky Ticket",
+    "emoji": "🎟️",
+    "category": "Crate Rewards",
+    "rarity": "Rare",
+    "price": 250000,
+    "sellPrice": 125000,
+    "description": "A Royal Lucky Ticket found inside a Rare Crate.",
+    "minStock": 1,
+    "maxStock": 2,
+    "effect": "collectible"
+  },
+  {
+    "id": "mythic_astral_relic",
+    "name": "Astral Relic",
+    "emoji": "🗿",
+    "category": "Crate Rewards",
+    "rarity": "Mythic",
+    "price": 2500000,
+    "sellPrice": 1250000,
+    "description": "A rare Astral Relic found inside a Mythic Crate.",
+    "minStock": 1,
+    "maxStock": 1,
+    "effect": "collectible"
+  },
+  {
+    "id": "mythic_lucky_core",
+    "name": "Mythic Lucky Core",
+    "emoji": "🔮",
+    "category": "Crate Rewards",
+    "rarity": "Mythic",
+    "price": 5000000,
+    "sellPrice": 2500000,
+    "description": "A Mythic Lucky Core found inside a Mythic Crate.",
+    "minStock": 1,
+    "maxStock": 1,
+    "effect": "collectible"
+  },
+  {
+    "id": "legendary_crown",
+    "name": "Crown of Astrix",
+    "emoji": "👑",
+    "category": "Crate Rewards",
+    "rarity": "Legendary",
+    "price": 25000000,
+    "sellPrice": 12500000,
+    "description": "A Crown of Astrix found inside a Legendary Crate.",
+    "minLevel": 25,
+    "minStock": 1,
+    "maxStock": 1,
+    "effect": "collectible"
+  }
+]
