@@ -1,0 +1,3243 @@
+[
+  {
+    "name": "help",
+    "description": "Open the interactive Astrix help center.",
+    "options": [
+      {
+        "name": "category",
+        "description": "Open a Help Center category directly.",
+        "type": "string",
+        "required": false,
+        "choices": [
+          ["Economy & Banking", "economy"],
+          ["Career & Jobs", "career"],
+          ["Marriage & Social", "marriage"],
+          ["Shop & Inventory", "shop"],
+          ["AI & Utilities", "ai"],
+          ["Music Playback", "music"],
+          ["Audio Filters & EQ", "filters"],
+          ["Security & Antinuke", "security"],
+          ["Moderation & Roles", "moderation"],
+          ["Tickets & Logging", "tickets"],
+          ["Premium & 24/7", "premium"],
+          ["Fun & Games", "fun"],
+          ["Owner", "owner"]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ping",
+    "description": "Show Astrix latency and bot information.",
+    "options": []
+  },
+  {
+    "name": "botstatus",
+    "description": "Run a live bot status panel in this channel.",
+    "subcommands": [
+      {
+        "name": "enable",
+        "description": "Use this channel for the live status panel.",
+        "options": []
+      },
+      {
+        "name": "refresh",
+        "description": "Refresh the live status panel now.",
+        "options": []
+      },
+      {
+        "name": "view",
+        "description": "Show the configured live status channel.",
+        "options": []
+      },
+      {
+        "name": "off",
+        "description": "Turn off the live status panel.",
+        "options": []
+      }
+    ]
+  },
+  {
+    "name": "classic",
+    "description": "Working compatibility commands from the original Discord Bot.",
+    "subcommands": [
+      {
+        "name": "afk",
+        "description": "Set or clear your AFK message.",
+        "options": [
+          {
+            "name": "message",
+            "description": "Why you are AFK; omit to clear it.",
+            "type": "string",
+            "required": false,
+            "max": 300
+          }
+        ]
+      },
+      {
+        "name": "birthday",
+        "description": "Save your birthday as YYYY-MM-DD.",
+        "options": [
+          {
+            "name": "date",
+            "description": "Birthday date in YYYY-MM-DD format.",
+            "type": "string",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "birthday-view",
+        "description": "View your saved birthday.",
+        "options": []
+      },
+      {
+        "name": "serverstats",
+        "description": "Show server member, channel and role counts.",
+        "options": []
+      },
+      {
+        "name": "channelinfo",
+        "description": "Show information about a channel.",
+        "options": [
+          {
+            "name": "channel",
+            "description": "Channel to inspect; defaults to this channel.",
+            "type": "channel",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "members",
+        "description": "Show the server member breakdown.",
+        "options": []
+      },
+      {
+        "name": "avatar",
+        "description": "Show a user's avatar links.",
+        "options": [
+          {
+            "name": "user",
+            "description": "User to inspect.",
+            "type": "user",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "roll",
+        "description": "Roll a number between the selected limits.",
+        "options": [
+          {
+            "name": "max",
+            "description": "Highest possible result.",
+            "type": "integer",
+            "required": false,
+            "min": 2,
+            "max": 1000000
+          }
+        ]
+      },
+      {
+        "name": "reverse",
+        "description": "Reverse text.",
+        "options": [
+          {
+            "name": "text",
+            "description": "Text to reverse.",
+            "type": "string",
+            "required": true,
+            "max": 1000
+          }
+        ]
+      },
+      {
+        "name": "calculator",
+        "description": "Calculate a basic arithmetic expression.",
+        "options": [
+          {
+            "name": "expression",
+            "description": "Numbers and + - * / % ( ) only.",
+            "type": "string",
+            "required": true,
+            "max": 200
+          }
+        ]
+      },
+      {
+        "name": "casino",
+        "description": "Play a small wallet-based casino game.",
+        "options": [
+          {
+            "name": "game",
+            "description": "Game to play.",
+            "type": "string",
+            "required": true,
+            "choices": [
+              ["Slots", "slots"],
+              ["Roulette", "roulette"],
+              ["Blackjack", "blackjack"]
+            ]
+          },
+          {
+            "name": "bet",
+            "description": "Coins to wager.",
+            "type": "integer",
+            "required": true,
+            "min": 10,
+            "max": 250000
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "balance",
+    "description": "View wallet, bank and net worth.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User to view",
+        "type": "user",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "profile",
+    "description": "View an Astrix profile card.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User to view",
+        "type": "user",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "xp",
+    "description": "View your XP progress and level card.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User to view",
+        "type": "user",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "daily",
+    "description": "Claim your daily economy reward.",
+    "options": []
+  },
+  {
+    "name": "weekly",
+    "description": "Claim your weekly economy reward.",
+    "options": []
+  },
+  {
+    "name": "bank",
+    "description": "Manage your Astrix virtual bank account.",
+    "subcommands": [
+      {
+        "name": "overview",
+        "description": "View your bank overview.",
+        "options": []
+      },
+      {
+        "name": "statement",
+        "description": "View recent virtual bank activity.",
+        "options": []
+      },
+      {
+        "name": "interest",
+        "description": "Toggle virtual bank interest.",
+        "options": [
+          {
+            "name": "enabled",
+            "description": "Enable or disable bank interest.",
+            "type": "boolean",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "upgrade",
+        "description": "Upgrade your virtual bank tier.",
+        "options": [
+          {
+            "name": "tier",
+            "description": "New bank tier",
+            "type": "string",
+            "required": true,
+            "choices": [
+              [
+                "Silver",
+                "silver"
+              ],
+              [
+                "Gold",
+                "gold"
+              ],
+              [
+                "Diamond",
+                "diamond"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "autopay",
+    "description": "Manage automatic loan EMI payments.",
+    "subcommands": [
+      {
+        "name": "status",
+        "description": "View AutoPay status.",
+        "options": []
+      },
+      {
+        "name": "enable",
+        "description": "Enable automatic loan EMI payments.",
+        "options": []
+      },
+      {
+        "name": "disable",
+        "description": "Disable automatic loan EMI payments.",
+        "options": []
+      }
+    ]
+  },
+  {
+    "name": "deposit",
+    "description": "Deposit wallet coins into your bank.",
+    "options": [
+      {
+        "name": "amount",
+        "description": "Amount to deposit",
+        "type": "integer",
+        "required": false,
+        "min": 1
+      }
+    ]
+  },
+  {
+    "name": "withdraw",
+    "description": "Withdraw bank coins into your wallet.",
+    "options": [
+      {
+        "name": "amount",
+        "description": "Amount to withdraw",
+        "type": "integer",
+        "required": true,
+        "min": 1
+      }
+    ]
+  },
+  {
+    "name": "pay",
+    "description": "Send wallet coins to another user.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Recipient",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "amount",
+        "description": "Amount to send",
+        "type": "integer",
+        "required": true,
+        "min": 1
+      }
+    ]
+  },
+  {
+    "name": "leaderboard",
+    "description": "View the server economy leaderboard.",
+    "options": []
+  },
+  {
+    "name": "inventory",
+    "description": "View your inventory.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User to view",
+        "type": "user",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "use",
+    "description": "Use an inventory item.",
+    "options": [
+      {
+        "name": "item",
+        "description": "Choose an item you own",
+        "type": "string",
+        "required": false,
+        "autocomplete": true
+      },
+      {
+        "name": "target",
+        "description": "Optional target user",
+        "type": "user",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "rob",
+    "description": "Try to steal coins from another user.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User to rob",
+        "type": "user",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "sell",
+    "description": "Sell an owned inventory item to the Astrix Market.",
+    "options": [
+      {
+        "name": "item",
+        "description": "Search an owned item to sell",
+        "type": "string",
+        "required": true,
+        "autocomplete": true
+      },
+      {
+        "name": "quantity",
+        "description": "Quantity",
+        "type": "integer",
+        "required": false,
+        "min": 1,
+        "max": 50
+      }
+    ]
+  },
+  {
+    "name": "work",
+    "description": "Work a quick shift for coins and XP.",
+    "subcommands": [
+      {
+        "name": "apply",
+        "description": "Apply for an unlocked career job.",
+        "options": [
+          {
+            "name": "job",
+            "description": "Career to apply for",
+            "type": "string",
+            "required": true,
+            "autocomplete": true
+          }
+        ]
+      },
+      {
+        "name": "list",
+        "description": "Browse available jobs and unlock requirements.",
+        "options": [
+          {
+            "name": "page",
+            "description": "Job list page",
+            "type": "integer",
+            "required": false,
+            "min": 1,
+            "max": 30
+          }
+        ]
+      },
+      {
+        "name": "shift",
+        "description": "Start a quick work shift and earn coins and XP.",
+        "options": []
+      },
+      {
+        "name": "resign",
+        "description": "Resign from your current career.",
+        "options": [
+          {
+            "name": "confirm",
+            "description": "Confirm that you want to resign",
+            "type": "boolean",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "stats",
+        "description": "View work performance and earnings.",
+        "options": [
+          {
+            "name": "user",
+            "description": "User to inspect",
+            "type": "user",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "history",
+        "description": "View your recent work results.",
+        "options": [
+          {
+            "name": "page",
+            "description": "History page",
+            "type": "integer",
+            "required": false,
+            "min": 1,
+            "max": 7
+          }
+        ]
+      },
+      {
+        "name": "career",
+        "description": "View your current career progress.",
+        "options": []
+      },
+      {
+        "name": "tips",
+        "description": "Get a helpful work tip.",
+        "options": []
+      }
+    ]
+  },
+  {
+    "name": "jobs",
+    "description": "View unlocked and locked career jobs.",
+    "options": []
+  },
+  {
+    "name": "applyjob",
+    "description": "Apply for a career job.",
+    "options": [
+      {
+        "name": "job",
+        "description": "Job ID",
+        "type": "string",
+        "required": true,
+        "choices": [
+          [
+            "Delivery Driver",
+            "delivery"
+          ],
+          [
+            "Cashier",
+            "cashier"
+          ],
+          [
+            "Cleaner",
+            "cleaner"
+          ],
+          [
+            "Warehouse Worker",
+            "warehouse"
+          ],
+          [
+            "Mechanic",
+            "mechanic"
+          ],
+          [
+            "Security Officer",
+            "security"
+          ],
+          [
+            "Technician",
+            "technician"
+          ],
+          [
+            "Paramedic",
+            "paramedic"
+          ],
+          [
+            "Engineer",
+            "engineer"
+          ],
+          [
+            "Operations Manager",
+            "manager"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "shift",
+    "description": "Start, end or view your current work shift.",
+    "options": [
+      {
+        "name": "action",
+        "description": "Shift action",
+        "type": "string",
+        "required": true,
+        "choices": [
+          [
+            "Start",
+            "start"
+          ],
+          [
+            "End",
+            "end"
+          ],
+          [
+            "Status",
+            "status"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "career",
+    "description": "View career progress and job unlocks.",
+    "options": []
+  },
+  {
+    "name": "loan",
+    "description": "Open the accelerated Astrix virtual bank loan center.",
+    "options": [
+      {
+        "name": "amount",
+        "description": "Virtual coin loan amount",
+        "type": "integer",
+        "required": false,
+        "min": 500,
+        "max": 500000
+      },
+      {
+        "name": "type",
+        "description": "Virtual loan type",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Personal",
+            "personal"
+          ],
+          [
+            "Business",
+            "business"
+          ],
+          [
+            "Emergency",
+            "emergency"
+          ]
+        ]
+      },
+      {
+        "name": "tenure",
+        "description": "Repayment tenure in months",
+        "type": "integer",
+        "required": false,
+        "choices": [
+          [
+            "1 month",
+            1
+          ],
+          [
+            "3 months",
+            3
+          ],
+          [
+            "6 months",
+            6
+          ],
+          [
+            "12 months",
+            12
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "credit",
+    "description": "View your virtual economy credit report.",
+    "options": []
+  },
+  {
+    "name": "repay",
+    "description": "Repay your active virtual loan using the accelerated virtual bank cycle.",
+    "options": [
+      {
+        "name": "amount",
+        "description": "Amount to repay; omit to pay the current EMI",
+        "type": "integer",
+        "required": false,
+        "min": 1
+      },
+      {
+        "name": "full",
+        "description": "Repay the full remaining balance",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "shop",
+    "description": "Open the unified level-scaled Astrix Market.",
+    "options": []
+  },
+  {
+    "name": "buy",
+    "description": "Buy an unlocked item from the Astrix Market.",
+    "options": [
+      {
+        "name": "item",
+        "description": "Search an unlocked market item",
+        "type": "string",
+        "required": true,
+        "autocomplete": true
+      },
+      {
+        "name": "quantity",
+        "description": "Quantity",
+        "type": "integer",
+        "required": false,
+        "min": 1,
+        "max": 20
+      }
+    ]
+  },
+  {
+    "name": "premium",
+    "description": "Open your Astrix Premium status and benefits dashboard.",
+    "options": []
+  },
+  {
+    "name": "ai",
+    "description": "Configure the Astrix AI reply channel.",
+    "subcommands": [
+      {
+        "name": "set",
+        "description": "Admin: limit Astrix AI replies to one channel.",
+        "options": [
+          {
+            "name": "channel",
+            "description": "Channel where Astrix AI should reply",
+            "type": "channel",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "off",
+        "description": "Admin: allow Astrix AI in every channel again.",
+        "options": []
+      },
+      {
+        "name": "view",
+        "description": "View the current Astrix AI channel.",
+        "options": []
+      }
+    ]
+  },
+  {
+    "name": "ask",
+    "description": "Ask Astrix AI a question.",
+    "options": [
+      {
+        "name": "prompt",
+        "description": "Your question",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "image",
+        "description": "Optional image for Astrix to analyze",
+        "type": "attachment",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "translate",
+    "description": "Translate text with Astrix AI.",
+    "options": [
+      {
+        "name": "text",
+        "description": "Text to translate",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "language",
+        "description": "Target language",
+        "type": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "rewrite",
+    "description": "Rewrite text with Astrix AI.",
+    "options": [
+      {
+        "name": "text",
+        "description": "Text to rewrite",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "style",
+        "description": "Optional style",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "summarize",
+    "description": "Summarize text with Astrix AI.",
+    "options": [
+      {
+        "name": "text",
+        "description": "Text to summarize",
+        "type": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "generate",
+    "description": "Generate useful text with Astrix AI.",
+    "options": [
+      {
+        "name": "prompt",
+        "description": "What should Astrix generate?",
+        "type": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "aiusage",
+    "description": "View AI daily limits and cooldowns.",
+    "options": []
+  },
+  {
+    "name": "play",
+    "description": "Play a song from SoundCloud search or a supported direct link.",
+    "options": [
+      {
+        "name": "query",
+        "description": "Song name or supported URL",
+        "type": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "pause",
+    "description": "Pause music playback.",
+    "options": []
+  },
+  {
+    "name": "resume",
+    "description": "Resume music playback.",
+    "options": []
+  },
+  {
+    "name": "skip",
+    "description": "Skip the current track.",
+    "options": []
+  },
+  {
+    "name": "queue",
+    "description": "View the current music queue.",
+    "options": []
+  },
+  {
+    "name": "nowplaying",
+    "description": "Show the current track with player controls.",
+    "options": []
+  },
+  {
+    "name": "loop",
+    "description": "Set music loop mode.",
+    "options": [
+      {
+        "name": "mode",
+        "description": "Loop mode",
+        "type": "string",
+        "required": true,
+        "choices": [
+          [
+            "Off",
+            "off"
+          ],
+          [
+            "Track",
+            "track"
+          ],
+          [
+            "Queue",
+            "queue"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "volume",
+    "description": "Set music volume.",
+    "options": [
+      {
+        "name": "percent",
+        "description": "Volume percentage",
+        "type": "integer",
+        "required": true,
+        "min": 0,
+        "max": 150
+      }
+    ]
+  },
+  {
+    "name": "stop",
+    "description": "Stop music and clear the queue.",
+    "options": []
+  },
+  {
+    "name": "disconnect",
+    "description": "Disconnect Astrix from the voice channel.",
+    "options": []
+  },
+  {
+    "name": "music247",
+    "description": "Configure Premium 24/7 voice music and autoplay.",
+    "subcommands": [
+      {
+        "name": "setup",
+        "description": "Set the voice channel and enable 24/7 music later.",
+        "options": [
+          {
+            "name": "channel",
+            "description": "Voice channel where Astrix must stay.",
+            "type": "channel",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "enable",
+        "description": "Enable protected Premium 24/7 voice mode.",
+        "options": []
+      },
+      {
+        "name": "disable",
+        "description": "Disable 24/7 mode and release the voice connection.",
+        "options": []
+      },
+      {
+        "name": "autoplay",
+        "description": "Turn Premium automatic related-song playback on or off.",
+        "options": [
+          {
+            "name": "enabled",
+            "description": "Whether autoplay should stay enabled.",
+            "type": "boolean",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "toggle",
+        "description": "Toggle native Lavalink 24/7 voice persistence.",
+        "options": []
+      },
+      {
+        "name": "status",
+        "description": "View the server's 24/7 music status.",
+        "options": []
+      }
+    ]
+  },
+  {
+    "name": "record",
+    "description": "Record a voice channel with Astrix.",
+    "subcommands": [
+      {
+        "name": "start",
+        "description": "Start recording your current voice channel."
+      },
+      {
+        "name": "stop",
+        "description": "Stop the active recording session."
+      },
+      {
+        "name": "status",
+        "description": "View the active recording status."
+      },
+      {
+        "name": "config",
+        "description": "Configure recording logs and silence timeout.",
+        "options": [
+          {
+            "name": "log_channel",
+            "description": "Channel where finished recording logs are sent",
+            "type": "channel",
+            "required": false
+          },
+          {
+            "name": "silence_minutes",
+            "description": "Auto-stop after this many minutes without audio",
+            "type": "integer",
+            "required": false,
+            "min": 1,
+            "max": 30
+          },
+          {
+            "name": "clear_log_channel",
+            "description": "Remove the configured recording log channel",
+            "type": "boolean",
+            "required": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "filter",
+    "description": "Apply a Lavalink audio filter preset.",
+    "options": [
+      {
+        "name": "preset",
+        "description": "Filter preset",
+        "type": "string",
+        "required": true,
+        "autocomplete": true
+      }
+    ]
+  },
+  {
+    "name": "ban",
+    "description": "Ban a member.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member to ban",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "reason",
+        "description": "Reason",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "unban",
+    "description": "Unban a user by ID.",
+    "options": [
+      {
+        "name": "user_id",
+        "description": "Discord user ID",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "reason",
+        "description": "Reason",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "kick",
+    "description": "Kick a member.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member to kick",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "reason",
+        "description": "Reason",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "timeout",
+    "description": "Timeout a member.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member to timeout",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "duration",
+        "description": "Duration: 30m, 2h, 3d, or 1w",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "reason",
+        "description": "Reason",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "untimeout",
+    "description": "Remove a member timeout.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "reason",
+        "description": "Reason",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "quarantine",
+    "description": "Quarantine members and manage their release.",
+    "subcommands": [
+      {
+        "name": "jail",
+        "description": "Quarantine a member by removing their roles.",
+        "options": [
+          {
+            "name": "user",
+            "description": "Member to quarantine",
+            "type": "user",
+            "required": true
+          },
+          {
+            "name": "channel",
+            "description": "Optional Quarantine channel; otherwise one is created or reused",
+            "type": "channel",
+            "required": false
+          },
+          {
+            "name": "duration",
+            "description": "Optional duration: 30m, 2h, 3d, or 1w",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "reason",
+            "description": "Reason",
+            "type": "string",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "unjail",
+        "description": "Release a member from Quarantine and restore their roles.",
+        "options": [
+          {
+            "name": "user",
+            "description": "Member to release",
+            "type": "user",
+            "required": true
+          },
+          {
+            "name": "reason",
+            "description": "Reason",
+            "type": "string",
+            "required": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "mute",
+    "description": "Mute a member with the configured Muted role.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member to mute",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "duration",
+        "description": "Optional duration: 30m, 2h, 3d, or 1w",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "reason",
+        "description": "Reason",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "unmute",
+    "description": "Remove the configured Muted role from a member.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member to unmute",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "reason",
+        "description": "Reason",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "warn",
+    "description": "Warn a member.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member to warn",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "reason",
+        "description": "Reason",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "warnings",
+    "description": "View a member warning history.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member",
+        "type": "user",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "clearwarns",
+    "description": "Clear a member warning history.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member",
+        "type": "user",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "purge",
+    "description": "Delete recent messages.",
+    "options": [
+      {
+        "name": "amount",
+        "description": "Number of messages",
+        "type": "integer",
+        "required": true,
+        "min": 1,
+        "max": 100
+      }
+    ]
+  },
+  {
+    "name": "lock",
+    "description": "Lock the current channel.",
+    "options": []
+  },
+  {
+    "name": "unlock",
+    "description": "Unlock the current channel.",
+    "options": []
+  },
+  {
+    "name": "slowmode",
+    "description": "Set channel slowmode seconds.",
+    "options": [
+      {
+        "name": "seconds",
+        "description": "Slowmode seconds",
+        "type": "integer",
+        "required": true,
+        "min": 0,
+        "max": 21600
+      }
+    ]
+  },
+  {
+    "name": "nickname",
+    "description": "Change or reset a member nickname.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "nickname",
+        "description": "New nickname; omit to reset",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "role",
+    "description": "Add or remove a role from a member.",
+    "options": [
+      {
+        "name": "user",
+        "description": "Member",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "role",
+        "description": "Role",
+        "type": "role",
+        "required": true
+      },
+      {
+        "name": "action",
+        "description": "Action",
+        "type": "string",
+        "required": true,
+        "choices": [
+          [
+            "Add",
+            "add"
+          ],
+          [
+            "Remove",
+            "remove"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "reactionrole",
+    "description": "Create a reaction-role mapping.",
+    "options": [
+      {
+        "name": "message_id",
+        "description": "Message ID in this channel",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "emoji",
+        "description": "Emoji",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "role",
+        "description": "Role to give",
+        "type": "role",
+        "required": true
+      },
+      {
+        "name": "mode",
+        "description": "Role mode",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Toggle",
+            "toggle"
+          ],
+          [
+            "Permanent",
+            "permanent"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "buttonrole",
+    "description": "Create a button-role panel.",
+    "options": [
+      {
+        "name": "role",
+        "description": "Role to toggle",
+        "type": "role",
+        "required": true
+      },
+      {
+        "name": "label",
+        "description": "Button label",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "title",
+        "description": "Panel title",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "description",
+        "description": "Panel description",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "rolemenu",
+    "description": "Create a self-role select menu with up to five roles.",
+    "options": [
+      {
+        "name": "role1",
+        "description": "Role option",
+        "type": "role",
+        "required": true
+      },
+      {
+        "name": "role2",
+        "description": "Role option",
+        "type": "role",
+        "required": false
+      },
+      {
+        "name": "role3",
+        "description": "Role option",
+        "type": "role",
+        "required": false
+      },
+      {
+        "name": "role4",
+        "description": "Role option",
+        "type": "role",
+        "required": false
+      },
+      {
+        "name": "role5",
+        "description": "Role option",
+        "type": "role",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "autorole",
+    "description": "Configure automatic join roles.",
+    "options": [
+      {
+        "name": "role",
+        "description": "Role to assign",
+        "type": "role",
+        "required": true
+      },
+      {
+        "name": "role2",
+        "description": "Optional second role to assign",
+        "type": "role",
+        "required": false
+      },
+      {
+        "name": "role3",
+        "description": "Optional third role to assign",
+        "type": "role",
+        "required": false
+      },
+      {
+        "name": "role4",
+        "description": "Optional fourth role to assign",
+        "type": "role",
+        "required": false
+      },
+      {
+        "name": "role5",
+        "description": "Optional fifth role to assign",
+        "type": "role",
+        "required": false
+      },
+      {
+        "name": "target",
+        "description": "Who receives it",
+        "type": "string",
+        "required": true,
+        "choices": [
+          [
+            "Members",
+            "members"
+          ],
+          [
+            "Bots",
+            "bots"
+          ],
+          [
+            "Both",
+            "both"
+          ]
+        ]
+      },
+      {
+        "name": "delay",
+        "description": "Delay seconds",
+        "type": "integer",
+        "required": false,
+        "min": 0,
+        "max": 300
+      },
+      {
+        "name": "enabled",
+        "description": "Enable or disable",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "massrole",
+    "description": "Add or remove a role from many server members.",
+    "options": [
+      {
+        "name": "role",
+        "description": "Role to add or remove",
+        "type": "role",
+        "required": true
+      },
+      {
+        "name": "action",
+        "description": "Mass role action",
+        "type": "string",
+        "required": true,
+        "choices": [
+          [
+            "Add",
+            "add"
+          ],
+          [
+            "Remove",
+            "remove"
+          ]
+        ]
+      },
+      {
+        "name": "target",
+        "description": "Members to process",
+        "type": "string",
+        "required": true,
+        "choices": [
+          [
+            "Everyone",
+            "all"
+          ],
+          [
+            "Human members",
+            "members"
+          ],
+          [
+            "Bots",
+            "bots"
+          ],
+          [
+            "Online members",
+            "online"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "verify",
+    "description": "Create the verification panel.",
+    "options": [
+      {
+        "name": "verified_role",
+        "description": "Role given after verification",
+        "type": "role",
+        "required": true
+      },
+      {
+        "name": "unverified_role",
+        "description": "Role removed after verification",
+        "type": "role",
+        "required": false
+      },
+      {
+        "name": "channel",
+        "description": "Panel channel",
+        "type": "channel",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "welcome",
+    "description": "Configure welcome messages.",
+    "options": [
+      {
+        "name": "channel",
+        "description": "Welcome channel",
+        "type": "channel",
+        "required": true
+      },
+      {
+        "name": "message",
+        "description": "Message; use {user} and {server}",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "enabled",
+        "description": "Enable or disable",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "media",
+        "description": "Select Media — upload a GIF or image to show when a member joins",
+        "type": "attachment",
+        "required": false
+      },
+      {
+        "name": "remove_media",
+        "description": "Remove the currently selected welcome media",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "goodbye",
+    "description": "Configure goodbye messages.",
+    "options": [
+      {
+        "name": "channel",
+        "description": "Goodbye channel",
+        "type": "channel",
+        "required": true
+      },
+      {
+        "name": "message",
+        "description": "Message; use {user} and {server}",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "enabled",
+        "description": "Enable or disable",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "logs",
+    "description": "Set the Astrix log channel.",
+    "options": [
+      {
+        "name": "channel",
+        "description": "Log channel",
+        "type": "channel",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "automod",
+    "description": "Configure Astrix AutoMod modules, thresholds and punishment escalation.",
+    "options": [
+      {
+        "name": "module",
+        "description": "AutoMod module",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Spam",
+            "spam"
+          ],
+          [
+            "Duplicate Messages",
+            "duplicate"
+          ],
+          [
+            "Links",
+            "links"
+          ],
+          [
+            "Invites",
+            "invites"
+          ],
+          [
+            "Phishing / Fake Gifts",
+            "phishing"
+          ],
+          [
+            "Mentions",
+            "mentions"
+          ],
+          [
+            "Caps",
+            "caps"
+          ],
+          [
+            "Emoji Spam",
+            "emoji"
+          ],
+          [
+            "Bad Words",
+            "badwords"
+          ],
+          [
+            "NSFW / Unsafe Media",
+            "nsfw"
+          ]
+        ]
+      },
+      {
+        "name": "enabled",
+        "description": "Enable or disable this module",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "action",
+        "description": "Base punishment",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Delete",
+            "delete"
+          ],
+          [
+            "Warn",
+            "warn"
+          ],
+          [
+            "Timeout",
+            "timeout"
+          ],
+          [
+            "Kick",
+            "kick"
+          ],
+          [
+            "Ban",
+            "ban"
+          ]
+        ]
+      },
+      {
+        "name": "duration",
+        "description": "Duration: 30m, 2h, 3d, or 1w",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "limit",
+        "description": "Threshold: messages, mentions, emoji count, or caps percent",
+        "type": "integer",
+        "required": false,
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "window_seconds",
+        "description": "Detection window for spam or duplicate messages",
+        "type": "integer",
+        "required": false,
+        "min": 2,
+        "max": 120
+      },
+      {
+        "name": "escalate_after",
+        "description": "Escalate after this many violations; omit or use 0 to keep off",
+        "type": "integer",
+        "required": false,
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "escalate_action",
+        "description": "Punishment after escalation threshold",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Warn",
+            "warn"
+          ],
+          [
+            "Timeout",
+            "timeout"
+          ],
+          [
+            "Kick",
+            "kick"
+          ],
+          [
+            "Ban",
+            "ban"
+          ]
+        ]
+      },
+      {
+        "name": "escalate_window_minutes",
+        "description": "Violation window used for escalation",
+        "type": "integer",
+        "required": false,
+        "min": 1,
+        "max": 1440
+      },
+      {
+        "name": "bypass_moderators",
+        "description": "Allow members with moderation permissions to bypass AutoMod",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dm_user",
+        "description": "DM the user when Warn, Timeout, Kick, or Ban is applied",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "antilink",
+    "description": "Configure Anti-Link protection and punishment.",
+    "options": [
+      {
+        "name": "enabled",
+        "description": "Enable or disable",
+        "type": "boolean",
+        "required": true
+      },
+      {
+        "name": "action",
+        "description": "Automatic punishment",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Delete",
+            "delete"
+          ],
+          [
+            "Warn",
+            "warn"
+          ],
+          [
+            "Timeout",
+            "timeout"
+          ],
+          [
+            "Kick",
+            "kick"
+          ],
+          [
+            "Ban",
+            "ban"
+          ]
+        ]
+      },
+      {
+        "name": "duration",
+        "description": "Duration: 30m, 2h, 3d, or 1w",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "bypass_moderators",
+        "description": "Allow moderators to bypass AutoMod",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dm_user",
+        "description": "DM the user when Warn, Timeout, Kick, or Ban is applied",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "antiinvite",
+    "description": "Configure Anti-Invite protection and punishment.",
+    "options": [
+      {
+        "name": "enabled",
+        "description": "Enable or disable",
+        "type": "boolean",
+        "required": true
+      },
+      {
+        "name": "action",
+        "description": "Automatic punishment",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Delete",
+            "delete"
+          ],
+          [
+            "Warn",
+            "warn"
+          ],
+          [
+            "Timeout",
+            "timeout"
+          ],
+          [
+            "Kick",
+            "kick"
+          ],
+          [
+            "Ban",
+            "ban"
+          ]
+        ]
+      },
+      {
+        "name": "duration",
+        "description": "Duration: 30m, 2h, 3d, or 1w",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "bypass_moderators",
+        "description": "Allow moderators to bypass AutoMod",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dm_user",
+        "description": "DM the user when Warn, Timeout, Kick, or Ban is applied",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "antispam",
+    "description": "Configure anti-spam threshold and punishment.",
+    "options": [
+      {
+        "name": "enabled",
+        "description": "Enable or disable",
+        "type": "boolean",
+        "required": true
+      },
+      {
+        "name": "messages",
+        "description": "Messages allowed in the window",
+        "type": "integer",
+        "required": false,
+        "min": 3,
+        "max": 20
+      },
+      {
+        "name": "seconds",
+        "description": "Window in seconds",
+        "type": "integer",
+        "required": false,
+        "min": 2,
+        "max": 30
+      },
+      {
+        "name": "action",
+        "description": "Automatic punishment",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Delete",
+            "delete"
+          ],
+          [
+            "Warn",
+            "warn"
+          ],
+          [
+            "Timeout",
+            "timeout"
+          ],
+          [
+            "Kick",
+            "kick"
+          ],
+          [
+            "Ban",
+            "ban"
+          ]
+        ]
+      },
+      {
+        "name": "duration",
+        "description": "Duration: 30m, 2h, 3d, or 1w",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "bypass_moderators",
+        "description": "Allow moderators to bypass AutoMod",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "dm_user",
+        "description": "DM the user when Warn, Timeout, Kick, or Ban is applied",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "badwords",
+    "description": "Manage the custom blocked-word list.",
+    "options": [
+      {
+        "name": "action",
+        "description": "Action",
+        "type": "string",
+        "required": true,
+        "choices": [
+          [
+            "Add",
+            "add"
+          ],
+          [
+            "Remove",
+            "remove"
+          ],
+          [
+            "List",
+            "list"
+          ]
+        ]
+      },
+      {
+        "name": "word",
+        "description": "Word or phrase",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "security",
+    "description": "Open the owner-only Astrix Security Center.",
+    "options": []
+  },
+  {
+    "name": "antinuke",
+    "description": "Configure Anti-Nuke detection and containment (server Administrator required).",
+    "options": [
+      {
+        "name": "enabled",
+        "description": "Enable or disable Anti-Nuke",
+        "type": "boolean",
+        "required": true
+      },
+      {
+        "name": "threshold",
+        "description": "Destructive actions before containment",
+        "type": "integer",
+        "required": false,
+        "min": 2,
+        "max": 20
+      },
+      {
+        "name": "window_seconds",
+        "description": "Detection window in seconds",
+        "type": "integer",
+        "required": false,
+        "min": 3,
+        "max": 60
+      },
+      {
+        "name": "action",
+        "description": "Containment action after threshold",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Contain roles + timeout",
+            "contain"
+          ],
+          [
+            "Kick actor",
+            "kick"
+          ],
+          [
+            "Ban actor",
+            "ban"
+          ],
+          [
+            "Lockdown only",
+            "lockdown_only"
+          ]
+        ]
+      },
+      {
+        "name": "lockdown",
+        "description": "Enable emergency channel lockdown after detection",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "recover",
+    "description": "Recover missing server structure from the latest Astrix backup.",
+    "options": []
+  },
+  {
+    "name": "backup",
+    "description": "Create, list, or restore a server structure backup.",
+    "options": [
+      {
+        "name": "action",
+        "description": "Backup operation",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Create snapshot",
+            "create"
+          ],
+          [
+            "List snapshots",
+            "list"
+          ],
+          [
+            "Prepare restore",
+            "restore"
+          ]
+        ]
+      },
+      {
+        "name": "backup_id",
+        "description": "Snapshot ID for restore; omit to use latest",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "label",
+        "description": "Label for a new snapshot",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "nuke",
+    "description": "Owner-only delete and recreate of the current channel with a backup.",
+    "options": []
+  },
+  {
+    "name": "antibot",
+    "description": "Configure unauthorized bot protection.",
+    "options": [
+      {
+        "name": "enabled",
+        "description": "Enable or disable",
+        "type": "boolean",
+        "required": true
+      },
+      {
+        "name": "bot",
+        "description": "Optional bot account to allow/remove",
+        "type": "user",
+        "required": false
+      },
+      {
+        "name": "allow",
+        "description": "Add bot to allowlist",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "trust",
+    "description": "Trust a user for Astrix security bypass.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User to trust",
+        "type": "user",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "untrust",
+    "description": "Remove a user from the Astrix security trusted list.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User to remove",
+        "type": "user",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "antiraid",
+    "description": "Configure join-raid protection.",
+    "options": [
+      {
+        "name": "enabled",
+        "description": "Enable or disable",
+        "type": "boolean",
+        "required": true
+      },
+      {
+        "name": "joins",
+        "description": "Join threshold per 10 seconds",
+        "type": "integer",
+        "required": false,
+        "min": 3,
+        "max": 50
+      }
+    ]
+  },
+  {
+    "name": "lockdown",
+    "description": "Enable emergency server lockdown.",
+    "options": []
+  },
+  {
+    "name": "unlockdown",
+    "description": "Restore channels from Astrix emergency lockdown.",
+    "options": []
+  },
+  {
+    "name": "antinsfw",
+    "description": "Configure NSFW-content safety filtering.",
+    "options": [
+      {
+        "name": "enabled",
+        "description": "Enable or disable",
+        "type": "boolean",
+        "required": true
+      },
+      {
+        "name": "action",
+        "description": "Automatic punishment",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Delete",
+            "delete"
+          ],
+          [
+            "Warn",
+            "warn"
+          ],
+          [
+            "Timeout",
+            "timeout"
+          ],
+          [
+            "Kick",
+            "kick"
+          ],
+          [
+            "Ban",
+            "ban"
+          ]
+        ]
+      },
+      {
+        "name": "duration",
+        "description": "Duration: 30m, 2h, 3d, or 1w",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "dm_user",
+        "description": "DM the user when Warn, Timeout, Kick, or Ban is applied",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "securitystatus",
+    "description": "View security protection status and recent incidents.",
+    "options": []
+  },
+  {
+    "name": "givecoins",
+    "description": "Owner: give virtual coins to a user.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "amount",
+        "description": "Coins",
+        "type": "integer",
+        "required": true,
+        "min": 1,
+        "max": 100000000
+      }
+    ]
+  },
+  {
+    "name": "setbalance",
+    "description": "Owner: set a user wallet and bank balance.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "wallet",
+        "description": "Wallet",
+        "type": "integer",
+        "required": true,
+        "min": 0,
+        "max": 1000000000
+      },
+      {
+        "name": "bank",
+        "description": "Bank",
+        "type": "integer",
+        "required": true,
+        "min": 0,
+        "max": 1000000000
+      }
+    ]
+  },
+  {
+    "name": "giveitem",
+    "description": "Owner: give an inventory item.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "item",
+        "description": "Item ID",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "quantity",
+        "description": "Quantity",
+        "type": "integer",
+        "required": false,
+        "min": 1,
+        "max": 100
+      }
+    ]
+  },
+  {
+    "name": "givepremium",
+    "description": "Owner: grant an Astrix Premium tier.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "days",
+        "description": "Days; omit for permanent",
+        "type": "integer",
+        "required": false,
+        "min": 1,
+        "max": 3650
+      },
+      {
+        "name": "tier",
+        "description": "Premium tier",
+        "type": "string",
+        "required": false,
+        "choices": [
+          [
+            "Premium",
+            "premium"
+          ],
+          [
+            "Premium+",
+            "plus"
+          ],
+          [
+            "Elite",
+            "elite"
+          ]
+        ]
+      },
+      {
+        "name": "early_access",
+        "description": "Grant Early Access with this membership",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "premium_gems",
+        "description": "Astrix Gems bonus; omit for tier default",
+        "type": "integer",
+        "required": false,
+        "min": 0,
+        "max": 1000000
+      }
+    ]
+  },
+  {
+    "name": "removepremium",
+    "description": "Owner: remove manually granted Astrix Premium.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User",
+        "type": "user",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "shoprefresh",
+    "description": "Owner: immediately rotate unified Astrix Market stock.",
+    "options": []
+  },
+  {
+    "name": "setcredit",
+    "description": "Owner: set a virtual economy credit score.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User",
+        "type": "user",
+        "required": true
+      },
+      {
+        "name": "score",
+        "description": "Credit score",
+        "type": "integer",
+        "required": true,
+        "min": 300,
+        "max": 850
+      }
+    ]
+  },
+  {
+    "name": "announce",
+    "description": "Owner: send a branded announcement.",
+    "options": [
+      {
+        "name": "channel",
+        "description": "Target channel",
+        "type": "channel",
+        "required": true
+      },
+      {
+        "name": "title",
+        "description": "Announcement title",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "message",
+        "description": "Announcement message",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "role",
+        "description": "Optional role to mention",
+        "type": "role",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "serverinfo",
+    "description": "View server information.",
+    "options": []
+  },
+  {
+    "name": "liveleaderboard",
+    "description": "Create or refresh one live log panel in the configured Astrix log channel.",
+    "options": [
+      {
+        "name": "category",
+        "description": "Which live panel should be shown",
+        "type": "string",
+        "required": true,
+        "choices": [
+          [
+            "Message Leaderboard",
+            "messages"
+          ],
+          [
+            "Voice Leaderboard",
+            "voice"
+          ],
+          [
+            "Invite Leaderboard",
+            "invites"
+          ],
+          [
+            "Moderation Log",
+            "moderation"
+          ],
+          [
+            "All Panels",
+            "all"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "userinfo",
+    "description": "View member information.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User",
+        "type": "user",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "avatar",
+    "description": "View a user avatar.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User",
+        "type": "user",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "roleinfo",
+    "description": "View role information.",
+    "options": [
+      {
+        "name": "role",
+        "description": "Role",
+        "type": "role",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "botinfo",
+    "description": "View Astrix bot information.",
+    "options": []
+  },
+  {
+    "name": "uptime",
+    "description": "View Astrix uptime.",
+    "options": []
+  },
+  {
+    "name": "membercount",
+    "description": "View server member counts.",
+    "options": []
+  },
+  {
+    "name": "rps",
+    "description": "Play rock paper scissors.",
+    "options": [
+      {
+        "name": "choice",
+        "description": "Your choice",
+        "type": "string",
+        "required": true,
+        "choices": [
+          [
+            "Rock",
+            "rock"
+          ],
+          [
+            "Paper",
+            "paper"
+          ],
+          [
+            "Scissors",
+            "scissors"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "trivia",
+    "description": "Start a quick trivia question.",
+    "options": []
+  },
+  {
+    "name": "ticket",
+    "description": "Complete Astrix support-ticket system.",
+    "subcommands": [
+      {
+        "name": "home",
+        "description": "Open the Astrix Ticket Center."
+      },
+      {
+        "name": "create",
+        "description": "Create a new private support ticket."
+      },
+      {
+        "name": "status",
+        "description": "View your ticket status and open tickets."
+      },
+      {
+        "name": "list",
+        "description": "List tracked tickets for ticket staff.",
+        "options": [
+          {
+            "name": "state",
+            "description": "Which tickets to list",
+            "type": "string",
+            "required": false,
+            "choices": [
+              [
+                "Open",
+                "open"
+              ],
+              [
+                "Closed",
+                "closed"
+              ],
+              [
+                "All",
+                "all"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "claim",
+        "description": "Claim the current ticket as staff."
+      },
+      {
+        "name": "unclaim",
+        "description": "Release your claim on the current ticket."
+      },
+      {
+        "name": "close",
+        "description": "Close the current ticket."
+      },
+      {
+        "name": "reopen",
+        "description": "Reopen the current closed ticket."
+      },
+      {
+        "name": "add",
+        "description": "Add a member to the current ticket.",
+        "options": [
+          {
+            "name": "user",
+            "description": "Member to add",
+            "type": "user",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "remove",
+        "description": "Remove a member from the current ticket.",
+        "options": [
+          {
+            "name": "user",
+            "description": "Member to remove",
+            "type": "user",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "rename",
+        "description": "Rename the current ticket channel.",
+        "options": [
+          {
+            "name": "name",
+            "description": "New ticket name",
+            "type": "string",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "transfer",
+        "description": "Transfer ticket ownership to another member.",
+        "options": [
+          {
+            "name": "user",
+            "description": "New ticket owner",
+            "type": "user",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "priority",
+        "description": "Set ticket priority.",
+        "options": [
+          {
+            "name": "level",
+            "description": "Ticket priority",
+            "type": "string",
+            "required": true,
+            "choices": [
+              [
+                "Low",
+                "low"
+              ],
+              [
+                "Normal",
+                "normal"
+              ],
+              [
+                "High",
+                "high"
+              ],
+              [
+                "Urgent",
+                "urgent"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "move",
+        "description": "Move the current ticket to another category.",
+        "options": [
+          {
+            "name": "category",
+            "description": "Destination category",
+            "type": "channel",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "lock",
+        "description": "Temporarily stop ticket users from sending messages."
+      },
+      {
+        "name": "unlock",
+        "description": "Unlock the current ticket for ticket users."
+      },
+      {
+        "name": "transcript",
+        "description": "Export the current ticket transcript."
+      },
+      {
+        "name": "delete",
+        "description": "Permanently delete the current ticket channel."
+      },
+      {
+        "name": "setup",
+        "description": "Configure the ticket system.",
+        "options": [
+          {
+            "name": "category",
+            "description": "Category where ticket channels are created",
+            "type": "channel",
+            "required": false
+          },
+          {
+            "name": "support_role",
+            "description": "Role that can view and manage tickets",
+            "type": "role",
+            "required": false
+          },
+          {
+            "name": "log_channel",
+            "description": "Channel for ticket logs",
+            "type": "channel",
+            "required": false
+          },
+          {
+            "name": "panel_channel",
+            "description": "Channel where the ticket panel will be posted",
+            "type": "channel",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "panel",
+        "description": "Publish the public Create Ticket panel.",
+        "options": [
+          {
+            "name": "channel",
+            "description": "Channel to publish the panel in",
+            "type": "channel",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "config",
+        "description": "View the current ticket configuration."
+      },
+      {
+        "name": "maxopen",
+        "description": "Set maximum open tickets allowed per user.",
+        "options": [
+          {
+            "name": "amount",
+            "description": "Maximum open tickets per user",
+            "type": "integer",
+            "required": true,
+            "min": 1,
+            "max": 5
+          }
+        ]
+      },
+      {
+        "name": "stats",
+        "description": "View ticket statistics for this server."
+      },
+      {
+        "name": "note",
+        "description": "Add a private staff note to the current ticket.",
+        "options": [
+          {
+            "name": "text",
+            "description": "Staff note",
+            "type": "string",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "pingstaff",
+        "description": "Ping the configured support role in this ticket."
+      }
+    ]
+  },
+  {
+    "name": "antimention",
+    "description": "Protect specific users from being mentioned.",
+    "subcommands": [
+      {
+        "name": "add",
+        "description": "Protect a user from mentions.",
+        "options": [
+          {
+            "name": "user",
+            "description": "User to protect",
+            "type": "user",
+            "required": true
+          },
+          {
+            "name": "duration",
+            "description": "Duration: 30m, 2h, 3d, or 1w",
+            "type": "string",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "remove",
+        "description": "Remove mention protection from a user.",
+        "options": [
+          {
+            "name": "user",
+            "description": "Protected user",
+            "type": "user",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "list",
+        "description": "List protected users."
+      },
+      {
+        "name": "clear",
+        "description": "Remove all Anti-Mention protected users."
+      }
+    ]
+  },
+  {
+    "name": "wallet",
+    "description": "View your cash wallet in a compact economy panel.",
+    "options": [
+      {
+        "name": "user",
+        "description": "User to view",
+        "type": "user",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "marry",
+    "description": "Astrix virtual marriage and proposals.",
+    "subcommands": [
+      {
+        "name": "propose",
+        "description": "Propose to another user with a selected Astrix marriage ring.",
+        "options": [
+          {
+            "name": "user",
+            "description": "User to propose to",
+            "type": "user",
+            "required": true
+          },
+          {
+            "name": "ring",
+            "description": "Marriage ring to use",
+            "type": "string",
+            "required": false,
+            "choices": [
+              [
+                "Silver Ring",
+                "silver_marriage_ring"
+              ],
+              [
+                "Gold Ring",
+                "gold_marriage_ring"
+              ],
+              [
+                "Platinum Ring",
+                "platinum_marriage_ring"
+              ],
+              [
+                "Diamond Ring",
+                "diamond_marriage_ring"
+              ],
+              [
+                "Ruby Ring",
+                "ruby_marriage_ring"
+              ],
+              [
+                "Royal Ring",
+                "royal_marriage_ring"
+              ],
+              [
+                "Kohinoor Ring",
+                "kohinoor_marriage_ring"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "accept",
+        "description": "Accept a pending marriage proposal.",
+        "options": [
+          {
+            "name": "user",
+            "description": "User who proposed",
+            "type": "user",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "decline",
+        "description": "Decline a pending marriage proposal.",
+        "options": [
+          {
+            "name": "user",
+            "description": "User who proposed",
+            "type": "user",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "status",
+        "description": "View your spouse, ring, anniversary and couple stats.",
+        "options": []
+      },
+      {
+        "name": "divorce",
+        "description": "End your Astrix virtual marriage with an expensive divorce fee.",
+        "options": [
+          {
+            "name": "confirm",
+            "description": "Confirm divorce",
+            "type": "boolean",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "gift",
+        "description": "Send a coin gift to your married partner.",
+        "options": [
+          {
+            "name": "user",
+            "description": "Your married partner",
+            "type": "user",
+            "required": true
+          },
+          {
+            "name": "amount",
+            "description": "Coins to gift",
+            "type": "integer",
+            "required": true,
+            "min": 1,
+            "max": 2000000000
+          }
+        ]
+      },
+      {
+        "name": "anniversary",
+        "description": "View your next anniversary and marriage history.",
+        "options": []
+      },
+      {
+        "name": "achievements",
+        "description": "View your marriage achievements.",
+        "options": [
+          {
+            "name": "user",
+            "description": "User to inspect",
+            "type": "user",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "leaderboard",
+        "description": "View the longest-running married couples.",
+        "options": []
+      }
+    ]
+  },
+  {
+    "name": "invites",
+    "description": "Astrix invite tracker.",
+    "subcommands": [
+      {
+        "name": "view",
+        "description": "View your current invite count.",
+        "options": [
+          {
+            "name": "user",
+            "description": "User to inspect",
+            "type": "user",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "inviter",
+        "description": "See who invited a member to this server.",
+        "options": [
+          {
+            "name": "user",
+            "description": "Member to inspect",
+            "type": "user",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "recent",
+        "description": "Show recent joins and their inviters.",
+        "options": [
+          {
+            "name": "limit",
+            "description": "Number of recent joins to show",
+            "type": "integer",
+            "required": false,
+            "min": 1,
+            "max": 25
+          }
+        ]
+      },
+      {
+        "name": "stats",
+        "description": "View invite activity for this server.",
+        "options": []
+      },
+      {
+        "name": "leaderboard",
+        "description": "View the server invite leaderboard.",
+        "options": []
+      },
+      {
+        "name": "channel-set",
+        "description": "Admin: set the channel for automatic invite reports.",
+        "options": [
+          {
+            "name": "channel",
+            "description": "Text channel for invite reports",
+            "type": "channel",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "channel-off",
+        "description": "Admin: stop automatic invite reports.",
+        "options": []
+      },
+      {
+        "name": "channel-view",
+        "description": "View the automatic invite report channel.",
+        "options": []
+      }
+    ]
+  },
+  {
+    "name": "settings",
+    "description": "Server management settings for Astrix.",
+    "subcommands": [
+      {
+        "name": "xp-channel",
+        "description": "Set the channel where level-up cards are posted.",
+        "options": [
+          {
+            "name": "channel",
+            "description": "Text channel for XP level-up announcements",
+            "type": "channel",
+            "required": true,
+            "channel_types": [
+              "GUILD_TEXT",
+              "GUILD_ANNOUNCEMENT"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "xp-channel-off",
+        "description": "Turn off the dedicated XP level-up channel.",
+        "options": []
+      },
+      {
+        "name": "xp-channel-view",
+        "description": "View the current XP level-up channel.",
+        "options": []
+      },
+      {
+        "name": "inviter-channel",
+        "description": "Set the channel for full inviter and invited-member reports.",
+        "options": [
+          {
+            "name": "channel",
+            "description": "Text channel for invite reports",
+            "type": "channel",
+            "required": true,
+            "channel_types": [
+              "GUILD_TEXT",
+              "GUILD_ANNOUNCEMENT"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "inviter-channel-off",
+        "description": "Turn off automatic invite reports.",
+        "options": []
+      },
+      {
+        "name": "inviter-channel-view",
+        "description": "View the current invite report channel.",
+        "options": []
+      },
+      {
+        "name": "log-channel",
+        "description": "Set the server activity and moderation log channel.",
+        "options": [
+          {
+            "name": "channel",
+            "description": "Private text channel for Astrix logs",
+            "type": "channel",
+            "required": true,
+            "channel_types": [
+              "GUILD_TEXT",
+              "GUILD_ANNOUNCEMENT"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "log-channel-reset",
+        "description": "Clear the manual channel and use the automatic live dashboard fallback.",
+        "options": []
+      },
+      {
+        "name": "log-channel-view",
+        "description": "View the current server activity log channel.",
+        "options": []
+      },
+      {
+        "name": "news-channel",
+        "description": "Set where Astrix feature update news is posted.",
+        "options": [
+          {
+            "name": "channel",
+            "description": "Text channel for Astrix update news",
+            "type": "channel",
+            "required": true,
+            "channel_types": [
+              "GUILD_TEXT",
+              "GUILD_ANNOUNCEMENT"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "news-channel-off",
+        "description": "Use the automatic fallback channel for Astrix update news.",
+        "options": []
+      },
+      {
+        "name": "news-channel-view",
+        "description": "View the current Astrix update news channel.",
+        "options": []
+      }
+    ]
+  }
+]
