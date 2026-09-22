@@ -1,0 +1,12 @@
+{
+  "id": "invite-tracker-attribution-2026-09-02",
+  "title": "Invite Tracker Update",
+  "summary": "Astrix now shows which member invited someone to the server whenever Discord provides invite tracking data.",
+  "items": [
+    "`/invites view` — view invite totals and who invited a member.",
+    "`/invites inviter` — view a member's inviter, invite code, and join time.",
+    "`/invites recent` — view recent joins together with their inviters.",
+    "`/invites stats` — view the server's invite activity summary.",
+    "`/settings news-channel` — choose the channel used for Astrix update announcements."
+  ]
+}
