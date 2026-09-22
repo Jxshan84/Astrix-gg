@@ -1,0 +1,36 @@
+ASTRIX v8.2 — DASHBOARD LIVE BRIDGE PATHS
+=========================================
+This is the Discord BOT repository, not the Next.js dashboard.
+
+REPLACE THESE EXISTING BOT FILES
+--------------------------------
+index.ts
+models/GuildConfig.ts
+services/roles.ts
+services/security.ts
+services/premium.ts
+services/owner.ts
+.env.example
+
+ADD THESE NEW BOT FILES
+-----------------------
+models/Premium.ts
+services/dashboardConfigSync.ts
+services/dashboardWelcome.ts
+services/dashboardLeave.ts
+
+WHY THESE FILES ARE NEEDED
+--------------------------
+- dashboardWelcome.ts: real member joins use Dashboard Welcome Studio settings.
+- dashboardLeave.ts: real member leaves use Dashboard Leave Studio settings.
+- dashboardConfigSync.ts: Dashboard AutoMod/Security settings sync into the existing bot services.
+- models/Premium.ts: mirrors active bot Premium grants into MongoDB so the dashboard can detect them.
+- roles.ts/security.ts: preserve existing commands while adding live dashboard reads/writes.
+- premium.ts/owner.ts: keep Owner/Premium commands and mirror grants/revokes to the dashboard database.
+
+ENVIRONMENT
+-----------
+MONGODB_URI must match the dashboard MONGODB_URI.
+OWNER_ID and/or OWNER_IDS can be used for Astrix owner access.
+
+No bot token needs to be changed for this bridge.

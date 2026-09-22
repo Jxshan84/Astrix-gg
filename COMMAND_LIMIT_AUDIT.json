@@ -1,0 +1,20 @@
+{
+  "previous_registered_count": 100,
+  "new_registered_count": 100,
+  "limit": 100,
+  "safety_margin": 0,
+  "registration_strategy": "merge-and-preserve",
+  "existing_global_commands_preserved": true,
+  "existing_guild_commands_preserved": true,
+  "removed_from_global_registration": [],
+  "source_definitions_preserved": true,
+  "core_systems_preserved": [
+    "XP",
+    "Invites",
+    "Marriage",
+    "AI",
+    "Music",
+    "Moderation",
+    "Management"
+  ]
+}
