@@ -1,33 +1,49 @@
+import mongoose, { Schema, Document } from 'mongoose';
 import { ASTRIX_PREMIUM_TIERS, getTierConfig, PremiumTierConfig } from './premiumTiers';
 
-export interface UserSubscription {
+// Database Schemas for persistent storage
+interface IUserSubscriptionDocument extends Document {
   userId: string;
   tierId: string;
   expiresAt: number;
   assignedBy: string;
 }
 
-export interface GuildSubscription {
+interface IGuildSubscriptionDocument extends Document {
   guildId: string;
   tierId: string;
   noPrefixUsers: string[];
   expiresAt: number;
 }
 
-// In-memory cache layer backed by your database persistence handler
-const userSubscriptions = new Map<string, UserSubscription>();
-const guildSubscriptions = new Map<string, GuildSubscription>();
+const UserSubscriptionSchema = new Schema<IUserSubscriptionDocument>({
+  userId: { type: String, required: true, unique: true, index: true },
+  tierId: { type: String, required: true },
+  expiresAt: { type: Number, required: true },
+  assignedBy: { type: String, required: true }
+});
+
+const GuildSubscriptionSchema = new Schema<IGuildSubscriptionDocument>({
+  guildId: { type: String, required: true, unique: true, index: true },
+  tierId: { type: String, required: true },
+  noPrefixUsers: { type: [String], default: [] },
+  expiresAt: { type: Number, required: true }
+});
+
+// Prevent model recompilation errors in hot-reload or multi-file setups
+export const UserSubModel = mongoose.models.AstrixUserSubscription || mongoose.model<IUserSubscriptionDocument>('AstrixUserSubscription', UserSubscriptionSchema);
+export const GuildSubModel = mongoose.models.AstrixGuildSubscription || mongoose.model<IGuildSubscriptionDocument>('AstrixGuildSubscription', GuildSubscriptionSchema);
 
 export class PremiumService {
   /**
-   * Check if a user has an active premium subscription
+   * Check if a user has an active premium subscription from the database
    */
   public static async getUserTier(userId: string): Promise<PremiumTierConfig | null> {
-    const sub = userSubscriptions.get(userId);
+    const sub = await UserSubModel.findOne({ userId });
     if (!sub) return null;
 
     if (Date.now() > sub.expiresAt) {
-      userSubscriptions.delete(userId);
+      await UserSubModel.deleteOne({ userId });
       return null;
     }
 
@@ -35,14 +51,14 @@ export class PremiumService {
   }
 
   /**
-   * Check if a guild has an active premium subscription
+   * Check if a guild has an active premium subscription from the database
    */
   public static async getGuildTier(guildId: string): Promise<PremiumTierConfig | null> {
-    const sub = guildSubscriptions.get(guildId);
+    const sub = await GuildSubModel.findOne({ guildId });
     if (!sub) return null;
 
     if (Date.now() > sub.expiresAt) {
-      guildSubscriptions.delete(guildId);
+      await GuildSubModel.deleteOne({ guildId });
       return null;
     }
 
@@ -50,32 +66,29 @@ export class PremiumService {
   }
 
   /**
-   * Grant subscription to a user
+   * Grant subscription to a user and save it to the database
    */
   public static async setUserTier(userId: string, tierKeyOrId: string, durationDays: number = 30, adminId: string): Promise<boolean> {
     const tier = getTierConfig(tierKeyOrId);
     if (!tier) return false;
 
     const expiresAt = Date.now() + durationDays * 24 * 60 * 60 * 1000;
-    userSubscriptions.set(userId, {
-      userId,
-      tierId: tier.id,
-      expiresAt,
-      assignedBy: adminId
-    });
 
-    // TODO: Add database persistence call here (e.g., MongoDB/Prisma upsert)
+    await UserSubModel.findOneAndUpdate(
+      { userId },
+      { userId, tierId: tier.id, expiresAt, assignedBy: adminId },
+      { upsert: true, new: true }
+    );
+
     return true;
   }
 
   /**
-   * Revoke subscription from a user
+   * Revoke subscription from a user in the database
    */
   public static async removeUserTier(userId: string): Promise<boolean> {
-    const exists = userSubscriptions.has(userId);
-    userSubscriptions.delete(userId);
-    // TODO: Add database removal call here
-    return exists;
+    const result = await UserSubModel.deleteOne({ userId });
+    return result.deletedCount > 0;
   }
 
   /**
@@ -90,7 +103,7 @@ export class PremiumService {
 
     // Check guild-level assigned no-prefix slots if guildId is provided
     if (guildId) {
-      const guildSub = guildSubscriptions.get(guildId);
+      const guildSub = await GuildSubModel.findOne({ guildId });
       if (guildSub && guildSub.noPrefixUsers.includes(userId)) {
         const guildTier = await this.getGuildTier(guildId);
         if (guildTier) return true;
@@ -101,7 +114,7 @@ export class PremiumService {
   }
 
   /**
-   * Add a member to guild's allowed no-prefix slots (Sovereign, Imperial, Royale)
+   * Add a member to guild's allowed no-prefix slots
    */
   public static async addGuildNoPrefixSlot(guildId: string, targetUserId: string): Promise<{ success: boolean; message: string }> {
     const guildTier = await this.getGuildTier(guildId);
@@ -109,10 +122,14 @@ export class PremiumService {
       return { success: false, message: 'This guild does not have an active Astrix Premium subscription.' };
     }
 
-    let sub = guildSubscriptions.get(guildId);
+    let sub = await GuildSubModel.findOne({ guildId });
     if (!sub) {
-      sub = { guildId, tierId: guildTier.id, noPrefixUsers: [], expiresAt: Date.now() + 30 * 24 * 60 * 60 * 1000 };
-      guildSubscriptions.set(guildId, sub);
+      sub = new GuildSubModel({
+        guildId,
+        tierId: guildTier.id,
+        noPrefixUsers: [],
+        expiresAt: Date.now() + 30 * 24 * 60 * 60 * 1000
+      });
     }
 
     if (sub.noPrefixUsers.includes(targetUserId)) {
@@ -124,6 +141,8 @@ export class PremiumService {
     }
 
     sub.noPrefixUsers.push(targetUserId);
+    await sub.save();
+
     return { success: true, message: `Successfully added <@${targetUserId}> to the guild no-prefix slots.` };
   }
 
@@ -131,12 +150,13 @@ export class PremiumService {
    * Remove a member from guild's no-prefix slots
    */
   public static async removeGuildNoPrefixSlot(guildId: string, targetUserId: string): Promise<boolean> {
-    const sub = guildSubscriptions.get(guildId);
+    const sub = await GuildSubModel.findOne({ guildId });
     if (!sub) return false;
 
     const index = sub.noPrefixUsers.indexOf(targetUserId);
     if (index > -1) {
       sub.noPrefixUsers.splice(index, 1);
+      await sub.save();
       return true;
     }
     return false;
